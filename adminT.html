@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #0056b3;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #004494;
+        }
+        .container {
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+    </header>
+    <nav>
+        <a href="#uploadArticle">Upload Artikel</a>
+        <a href="#uploadImage">Upload Gambar</a>
+        <a href="#uploadB">Upload Bahaya Sampah</a>
+        <a href="#uploadM">Upload Manfaat Sampah</a>
+        <a href="#uploadP">Upload Pengelompokan Sampah</a>
+    </nav>
+    <div class="container">
+        <div id="uploadArticle" class="form-container">
+            <h2>Upload Artikel</h2>
+            <form id="uploadArticleForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Judul Artikel</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Isi Artikel</label>
+                    <textarea id="content" name="content" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="articleImage">Gambar Artikel (Opsional)</label>
+                    <input type="file" id="articleImage" name="articleImage" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <button type="submit">Upload Artikel</button>
+                </div>
+            </form>
+        </div>
+        <div id="uploadImage" class="form-container">
+            <h2>Upload Gambar</h2>
+            <form id="uploadImageForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="description">Deskripsi</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="image">Pilih Gambar</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Upload Gambar</button>
+                </div>
+            </form>
+        </div>
+        <div id="uploadB" class="form-container">
+            <h2>Update Bahaya Sampah</h2>
+            <form action="uploadA/upload_b.php" method="post" enctype="multipart/form-data">
+                <label for="b_sampah">Artikel b_sampah:</label><br>
+                <textarea name="b_sampah" id="b_sampah" rows="5" cols="40" required></textarea><br><br>
+                
+                <label for="b_sampah_image">Gambar b_sampah:</label><br>
+                <input type="file" name="b_sampah_image" id="b_sampah_image" accept="image/*" required><br><br>
+                
+                <div class="form-group">
+                    <button type="submit">Upload Artikel</button>
+                </div>
+            </form>
+        </div>
+        <div id="uploadM" class="form-container">
+            <h2>Update Manfaat Sampah</h2>
+            <form action="uploadA/upload_m.php" method="post" enctype="multipart/form-data">
+                <label for="m_sampah">Artikel m_sampah:</label><br>
+                <textarea name="m_sampah" id="m_sampah" rows="5" cols="40" required></textarea><br><br>
+                
+                <label for="m_sampah_image">Gambar m_sampah:</label><br>
+                <input type="file" name="m_sampah_image" id="m_sampah_image" accept="image/*" required><br><br>
+                
+                <div class="form-group">
+                    <button type="submit">Upload Artikel</button>
+                </div>
+            </form>
+        </div>
+        <div id="uploadP" class="form-container">
+            <h2>Update pengelompokan Sampah</h2>
+            <form action="uploadA/upload_p.php" method="post" enctype="multipart/form-data">
+                <label for="p_sampah">Artikel p_sampah:</label><br>
+                <textarea name="p_sampah" id="p_sampah" rows="5" cols="40" required></textarea><br><br>
+                
+                <label for="p_sampah_image">Gambar p_sampah:</label><br>
+                <input type="file" name="p_sampah_image" id="p_sampah_image" accept="image/*" required><br><br>
+                
+                <div class="form-group">
+                    <button type="submit">Upload Artikel</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script>
+        document.getElementById("uploadArticleForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            // Pastikan ada judul dan isi artikel
+            if (!formData.get("title") || !formData.get("content")) {
+                alert("Judul dan isi artikel wajib diisi!");
+                return;
+            }
+
+            formData.append("action", "upload_article");
+            const response = await fetch("upload_article.php", { method: "POST", body: formData });
+            const result = await response.json();
+            alert(result.message);
+        });
+
+        document.getElementById("uploadImageForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            // Validasi deskripsi harus diisi
+            if (!formData.get("description")) {
+                alert("Deskripsi wajib diisi!");
+                return;
+            }
+
+            formData.append("action", "upload_image");
+            const response = await fetch("upload_article.php", { method: "POST", body: formData });
+            const result = await response.json();
+            alert(result.message);
+        });
+    </script>
+</body>
+</html>
