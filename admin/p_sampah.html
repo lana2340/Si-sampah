@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload p_sampah</title>
+</head>
+<body>
+    <h1>Upload p_sampah</h1>
+    <form action="../uploadA/upload_p.php" method="post" enctype="multipart/form-data">
+        <label for="p_sampah">Artikel p_sampah:</label><br>
+        <textarea name="p_sampah" id="p_sampah" rows="5" cols="40" required></textarea><br><br>
+        
+        <label for="p_sampah_image">Gambar p_sampah:</label><br>
+        <input type="file" name="p_sampah_image" id="p_sampah_image" accept="image/*" required><br><br>
+        
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

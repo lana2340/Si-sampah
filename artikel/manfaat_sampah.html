@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Sampah</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .article {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .article img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .article p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Artikel Manfaat Sampah</h1>
+        <div id="articles">
+            <!-- Articles will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        async function fetchArticles() {
+            try {
+                const response = await fetch('mengambil_m_sampah.php'); // Replace with your PHP script path
+                const data = await response.json();
+
+                const articlesDiv = document.getElementById('articles');
+                data.forEach(row => {
+                    const articleDiv = document.createElement('div');
+                    articleDiv.className = 'article';
+
+                    articleDiv.innerHTML = `
+                        <img src="data:image/jpeg;base64,${row.m_sampah_image}" alt="Image">
+                        <p>${row.m_sampah}</p>
+                    `;
+
+                    articlesDiv.appendChild(articleDiv);
+                });
+            } catch (error) {
+                console.error('Error fetching articles:', error);
+            }
+        }
+
+        fetchArticles();
+    </script>
+</body>
+</html>
